@@ -353,7 +353,9 @@
         self.transform = CGAffineTransformIdentity;
     } completion:^(BOOL completed){
         if (completed) {
-            [self.containerView addGestureRecognizer:self.removeGesture];
+			if (self.shouldDismissOnTapOutside) {
+				[self.containerView addGestureRecognizer:self.removeGesture];
+			}
             if (self.appearHandler) {
                 self.appearHandler();
             }
